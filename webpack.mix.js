@@ -17,5 +17,5 @@ mix.js('resources/js/app.js', 'public/js')
 
 
 mix.browserSync({
-    proxy: 'localhost:8090',
+    proxy: 'laravel-blade-set.test',
 });
