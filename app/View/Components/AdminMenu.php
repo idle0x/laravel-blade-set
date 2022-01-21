@@ -67,8 +67,8 @@ class AdminMenu extends Component
 
         $arr = explode('_', $name);
         $hierarchy = [];
-        dump($this->recursive($arr, count($arr) - 1, []));
-        dump($hierarchy);
+        // dump($this->recursive($arr, count($arr) - 1, []));
+        // dump($hierarchy);
         return view('components.admin-menu', ['menu' => $this->adminMenu]);
     }
 

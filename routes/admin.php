@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,8 @@ Route::prefix('admin')->group(function () {
     })->name('admin.articles.authors');
 
     Route::get('/users', function () {
-        return "Hello on users page";
+        $users = User::all();
+        return view("admin.users.index", ['users' => $users]);
     })->name('admin.users');
 });
 
