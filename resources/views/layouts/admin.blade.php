@@ -14,9 +14,9 @@
   <div id="admin-navbar">
     @include("layouts.partials.admin-navbar")
   </div>
-  <div id="admin-sidebar">
+  <aside id="admin-sidebar">
     @include("layouts.partials.admin-sidebar")
-  </div>
+  </aside>
   <div id="admin-content">
     @yield('content')
   </div>

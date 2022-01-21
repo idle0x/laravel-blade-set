@@ -54,21 +54,10 @@
 @import "./../../node_modules/bootstrap/scss/utilities/api";
 // scss-docs-end import-stack
 
-#admin-sidebar {
-  .sidebar {
-    width: 220px;
-    background: #376a81;
-    position: relative;
-    height: 100%;
+@import "./../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
 
-    &__border {
-      position: absolute;
-      height: 100%;
-      width: 5px;
-      background: #79a6bb;
-      top: 0;
-      right: 0;
-      cursor: e-resize;
-    }
-  }
-}
+// Layouts
+@import "./layouts/admin";
+
+// Components
+@import "./components/admin_menu.scss";

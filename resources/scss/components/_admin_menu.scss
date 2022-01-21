@@ -1,0 +1,12 @@
+.admin-menu {
+  &__item {
+    white-space: nowrap;
+  }
+  &__link {
+    font-size: 16px;
+    font-weight: 700;
+    &-active {
+      color: red !important;
+    }
+  }
+}

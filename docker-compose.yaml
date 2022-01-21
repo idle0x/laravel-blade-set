@@ -35,12 +35,21 @@ services:
     networks:
       - lbs
 
+  redis:
+    image: 'redis:alpine'
+    ports:
+      - '${FORWARD_REDIS_PORT:-6379}:6379'
+    volumes:
+      - 'redis_data:/data'
+    networks:
+      - lbs
+
   meilisearch:
     image: 'getmeili/meilisearch:latest'
     ports:
       - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
     volumes:
-      - 'meilisearch:/data.ms'
+      - 'meilisearch_data:/data.ms'
     networks:
       - lbs
     healthcheck:
@@ -62,4 +71,5 @@ networks:
 
 volumes:
   postgres_data:
-  meilisearch:
+  redis_data:
+  meilisearch_data:

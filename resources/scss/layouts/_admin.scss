@@ -1,0 +1,39 @@
+#admin-sidebar {
+  .sidebar {
+    width: 220px;
+    background: #414141;
+    position: relative;
+    height: 100%;
+    transition: 0.5s;
+    overflow: hidden;
+
+    // &__border {
+    //   position: absolute;
+    //   height: 100%;
+    //   width: 5px;
+    //   background: #1d3f4e;
+    //   top: 0;
+    //   right: 0;
+    //   cursor: e-resize;
+    // }
+
+    &.compact {
+      width: 50px;
+    }
+  }
+}
+
+.sidebar__toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+#wrapper {
+  display: grid;
+  
+}
