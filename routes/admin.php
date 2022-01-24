@@ -27,7 +27,7 @@ Route::prefix('admin')->group(function () {
     })->name('admin.articles');
 
     Route::get('/articles/authors', function () {
-        return view('admin.articles_authors');
+        return view('admin.articles.authors');
     })->name('admin.articles.authors');
 
     Route::get('/users', function () {

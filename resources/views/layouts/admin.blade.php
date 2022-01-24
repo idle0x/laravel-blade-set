@@ -11,15 +11,15 @@
 </head>
 
 <body>
-  <div id="admin-navbar">
-    @include("layouts.partials.admin-navbar")
-  </div>
-  <aside id="admin-sidebar">
-    @include("layouts.partials.admin-sidebar")
-  </aside>
-  <div id="admin-content">
-    @yield('content')
-  </div>
+    @include("layouts.partials.admin-header")
+    <div class="container-fluid">
+      <div class="row h-100">
+        @include("layouts.partials.admin-sidebar")
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          @yield('content')
+        </main>
+      </div>
+    </div>
 
   <script src="{{ mix('js/admin.js') }}"></script>
   @stack('js')
