@@ -1,5 +1,11 @@
 {
-    "/js/app.js": "/js/app.js?id=138c2be0782f5f93072a",
-    "/js/admin.js": "/js/admin.js?id=35ca4179e8f7d82779bf",
-    "/css/admin.css": "/css/admin.css?id=c3888205cc0ac605cafe"
+    "/js/app.js": "/js/app.js?id=13a64a4b26c64e008740",
+    "/js/editor.js": "/js/editor.js?id=578dc4822904d316844a",
+    "/js/datatables.js": "/js/datatables.js?id=8e150cdbf2300fac27cf",
+    "/js/datepicker.js": "/js/datepicker.js?id=2f1978b3d99c4c9a2ebd",
+    "/js/admin.js": "/js/admin.js?id=d7de708674eefaddf0d7",
+    "/css/datepicker.css": "/css/datepicker.css?id=9fce3c96ceb30813130f",
+    "/css/datatables.css": "/css/datatables.css?id=d51c139b41e312c912de",
+    "/css/admin.css": "/css/admin.css?id=5c074cbeec2bda240236",
+    "/css/app.css": "/css/app.css?id=4b229d7fc30c15a3e94c"
 }

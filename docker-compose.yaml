@@ -16,9 +16,11 @@ services:
 
   php:
     image: idleo/lardo:latest
+    environment:
+      XDEBUG_MODE: 'debug,develop,coverage'
+      XDEBUG_CLIENT_HOST: 'client_host=172.17.0.1'
     volumes:
       - ./:/var/www
-      - '${PWD}/docker/php/:/etc/supervisor.d/'
     networks:
       - lbs
 
@@ -46,6 +48,8 @@ services:
 
   meilisearch:
     image: 'getmeili/meilisearch:latest'
+    # environment:
+    #   MEILI_MASTER_KEY: '${MEILISEARCH_KEY}'
     ports:
       - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
     volumes:

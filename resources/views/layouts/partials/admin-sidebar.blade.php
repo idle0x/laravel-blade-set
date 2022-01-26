@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="">
   <div class="position-sticky pt-3">
     <x-admin-menu class="menu"></x-admin-menu>
 

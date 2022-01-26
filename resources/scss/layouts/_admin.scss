@@ -1,4 +1,4 @@
-.sidebar {
+#sidebarMenu  {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -6,4 +6,14 @@
   z-index: 100;
   padding: 48px 0 0;
   box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
+
+  .nav-link.active {
+    background: $blue;
+    color: $white;
+  }
+}
+
+
+.form-control:focus {
+  box-shadow: none !important;
 }

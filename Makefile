@@ -1,5 +1,7 @@
 #Helpers
 DC = docker-compose
+EXEC = ${DC} exec
+ARTISAN = ${EXEC} php ./artisan
 
 ##
 ##Environment
@@ -10,6 +12,11 @@ build: ## Build app environment and start
 	$(DC) up -d --build
 down: ## Stop app environment
 	docker-compose down
+
+link-storage: ## Create link for storage folder
+    ${ARTISAN} storage:link
+
+
 
 .DEFAULT_GOAL := help
 help:

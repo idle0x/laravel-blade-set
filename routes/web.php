@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Article;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $articles = Article::all();
+    return view('web.index', ['articles' => $articles]);
+});
+
+Route::get('/article/{slug?}', function ($slug=null) {
+    $article = Article::where(['slug' => $slug])->firstOrFail();
+    return view('web.article.index', ['article' => $article]);
+
 });

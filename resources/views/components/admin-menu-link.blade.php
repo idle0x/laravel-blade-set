@@ -1,6 +1,5 @@
-@dump($attributes)
 <li class="nav-item">
-  <a class="nav-link" {{ $attributes }}
+  <a {{ $attributes->class('nav-link') }}
     aria-current="page">
     {{ $slot }}
   </a>

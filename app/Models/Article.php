@@ -9,4 +9,17 @@ use Laravel\Scout\Searchable;
 class Article extends Model
 {
     use HasFactory, Searchable;
+
+    protected $fillable = [
+        "title",
+        "slug",
+        "content",
+        "user_id",
+        "posted_at"
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

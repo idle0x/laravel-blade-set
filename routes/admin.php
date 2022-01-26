@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -22,18 +24,18 @@ Route::prefix('admin')->group(function () {
         ]);
     })->name('admin.dashboard');
 
-    Route::get('/articles', function () {
-        return view('admin.articles.index');
-    })->name('admin.articles');
+    Route::get('/articles', [ArticleController::class, 'index'])->name('admin.articles');
+    Route::get('/articles/{id}', [ArticleController::class, 'edit']);
 
-    Route::get('/articles/authors', function () {
-        return view('admin.articles.authors');
-    })->name('admin.articles.authors');
+    // Route::get('/articles/authors', function () {
+    //     return view('admin.articles.authors');
+    // })->name('admin.articles.authors');
 
-    Route::get('/users', function () {
-        $users = User::all();
-        return view("admin.users.index", ['users' => $users]);
-    })->name('admin.users');
+    Route::get('/users', [UserController::class, 'index'])->name('admin.users');
+    Route::get('/users/{id}', [UserController::class, 'edit']);
+    Route::post('/user/update', function () {
+        return "Woo!!";
+    })->name('user_update');
 });
 
 Route::redirect('/admin', '/admin/dashboard');
