@@ -61,3 +61,7 @@
 
 // Components
 @import "./components/admin_menu.scss";
+
+.btn:focus {
+  box-shadow: none;
+}

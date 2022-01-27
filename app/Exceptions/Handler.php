@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Route;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -37,5 +38,36 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\Response
+     */
+    public function render($request, Throwable $exception)
+    {
+        if ($this->isHttpException($exception)) {
+            dump(Route::getCurrentRoute());
+            switch ($exception->getStatusCode()) {
+                    // not found
+                case 404:
+                    return redirect()->route('notfound');
+                    break;
+
+                    // internal error
+                case '500':
+                    return redirect()->route('notfound');
+                    break;
+
+                default:
+                    return $this->renderHttpException($e);
+                    break;
+            }
+        } else {
+            return parent::render($request, $exception);
+        }
     }
 }

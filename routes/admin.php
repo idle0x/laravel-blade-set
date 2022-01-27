@@ -25,14 +25,14 @@ Route::prefix('admin')->group(function () {
     })->name('admin.dashboard');
 
     Route::get('/articles', [ArticleController::class, 'index'])->name('admin.articles');
-    Route::get('/articles/{id}', [ArticleController::class, 'edit']);
+    Route::get('/articles/{id}', [ArticleController::class, 'edit'])->name('article_edit');
 
     // Route::get('/articles/authors', function () {
     //     return view('admin.articles.authors');
     // })->name('admin.articles.authors');
 
     Route::get('/users', [UserController::class, 'index'])->name('admin.users');
-    Route::get('/users/{id}', [UserController::class, 'edit']);
+    Route::get('/users/{id}', [UserController::class, 'edit'])->name('user_edit');
     Route::post('/user/update', function () {
         return "Woo!!";
     })->name('user_update');

@@ -1,17 +1,37 @@
-<ul class="nav flex-column">
-    <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
-    @foreach ($menu as $link)
-      @php
-      $class = "";
-      if (\Route::is($link->getName())) {
-        $class .= "active";
-      }
-      @endphp
-    <x-admin-menu-link href="{{ route($link->getName()) }}"
-          class="{{ \Route::is($link->getName()) ? 'active' : '' }}"
-        >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-        {{ __("admin_menu.{$link->getName()}") }}
-      </x-admin-menu-link>
-    @endforeach
+<ul class="nav nav-pills flex-column mb-auto">
+  <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
+  @foreach ($menu as $link)
+  <x-admin-menu-link href="{{ route($link->getName()) }}"
+        class="{{ $link->isActive ? 'active' : '' }}"
+      >
+      <svg class="bi me-2" width="16" height="16" fill="#ffffff"><use xlink:href="#{{$link->getName()}}"></use></svg>
+      {{ __("admin_menu.{$link->getName()}") }}
+    </x-admin-menu-link>
+  @endforeach
+  <li class="mb-1">
+    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+      Account
+    </button>
+    <div class="collapse" id="account-collapse" style="">
+      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <li><a href="#" class="link-light rounded">New...</a></li>
+        <li><a href="#" class="link-light rounded">Profile</a></li>
+        <li><a href="#" class="link-light rounded">Settings</a></li>
+        <li><a href="#" class="link-light rounded">Sign out</a></li>
+      </ul>
+    </div>
+  </li>
+  <li class="mb-1">
+    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+      Dashboard
+    </button>
+    <div class="collapse" id="dashboard-collapse" style="">
+      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <li><a href="#" class="link-light rounded">Overview</a></li>
+        <li><a href="#" class="link-light rounded">Weekly</a></li>
+        <li><a href="#" class="link-light rounded">Monthly</a></li>
+        <li><a href="#" class="link-light rounded">Annually</a></li>
+      </ul>
+    </div>
+  </li>
 </ul>

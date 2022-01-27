@@ -1,7 +1,8 @@
 #Helpers
 DC = docker-compose
 EXEC = ${DC} exec
-ARTISAN = ${EXEC} php ./artisan
+PHP = ${EXEC} php
+ARTISAN = ${PHP} ./artisan
 
 ##
 ##Environment
@@ -13,9 +14,38 @@ build: ## Build app environment and start
 down: ## Stop app environment
 	docker-compose down
 
-link-storage: ## Create link for storage folder
-    ${ARTISAN} storage:link
+##
+##Tests
+##-------------
+test: ## Run tests
+	${ARTISAN} test
+coverage:
+	${PHP} ./vendor/bin/phpunit --coverage-text tests
 
+coverage-html: ## Tests coverage (xdebug need in coverage mode)
+	${PHP} ./vendor/bin/phpunit --coverage-html tests/coverage
+	> chown-tests
+
+chown-tests:
+	${PHP} chown 1000:1000 -R tests/
+##
+##Helpers
+##-------------
+link-storage: ## Create link for storage folder
+	${ARTISAN} storage:link
+
+##
+##Utils
+##-------------
+mchown: ## (make FOLDER=tests/ mchown) Command for change owner to 1000:1000
+	echo "folder: " $(FOLDER)
+	${PHP} chown 1000:1000 -R $(FOLDER)
+
+
+tt:
+	echo $(FOO)
+	ls -al
+	ls -al ./tests
 
 
 .DEFAULT_GOAL := help

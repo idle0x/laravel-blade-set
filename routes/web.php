@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Article;
+use Illuminate\Routing\Router;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +16,12 @@ use App\Models\Article;
 |
 */
 
-Route::get('/', function () {
-    $articles = Article::all();
-    return view('web.index', ['articles' => $articles]);
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/article/{slug?}', function ($slug=null) {
     $article = Article::where(['slug' => $slug])->firstOrFail();
     return view('web.article.index', ['article' => $article]);
 
 });
+
+Route::get('pagenotfound', [HomeController::class, 'pagenotfound'])->name('pagenotfound');
