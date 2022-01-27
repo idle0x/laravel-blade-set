@@ -3,13 +3,17 @@ import "bootstrap/dist/js/bootstrap.esm";
 
 
 window.onload = () => {
-  console.log("Test admin");
-  const st = document.querySelector(".sidebar__toggler");
+  const st = document.querySelector('#sidebarToggler');
   if (st) {
     st.addEventListener('click', (e) => {
-      console.log("test");
-      const sidebar = document.querySelector(".sidebar");
-      sidebar.classList.toggle('compact');
+      const wrapper = document.querySelector("#wrapper");
+      if (wrapper) {
+        if (window.innerWidth <= 992) {
+          wrapper.classList.toggle('sidebar-show');
+        } else {
+          wrapper.classList.toggle('sidebar-hide');
+        }
+      }
     })
   }
 };

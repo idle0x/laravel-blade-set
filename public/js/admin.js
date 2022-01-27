@@ -8235,14 +8235,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.onload = function () {
-  console.log("Test admin");
-  var st = document.querySelector(".sidebar__toggler");
+  var st = document.querySelector('#sidebarToggler');
 
   if (st) {
     st.addEventListener('click', function (e) {
-      console.log("test");
-      var sidebar = document.querySelector(".sidebar");
-      sidebar.classList.toggle('compact');
+      var wrapper = document.querySelector("#wrapper");
+
+      if (wrapper) {
+        if (window.innerWidth <= 992) {
+          wrapper.classList.toggle('sidebar-show');
+        } else {
+          wrapper.classList.toggle('sidebar-hide');
+        }
+      }
     });
   }
 };
