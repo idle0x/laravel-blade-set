@@ -1,12 +1,18 @@
 @extends('layouts.admin')
 
+@section('breadcrumbs')
+  {{ Breadcrumbs::render(Route::currentRouteName(), $user->id) }}
+@endsection
+
 @section('content')
 
   <div class="container py-5">
-    <h2 class="border-bottom">Edit: {{ $user->name }}</h2>
-    <form action="{{ route('user_update') }}">
+    <h2 class="border-bottom">{{ $user->fullName }}</h2>
+    <form action="{{ route('user.update', $user->id) }}">
       @csrf
-      @method("PUT")
+      @if (!empty($user))
+        @method("PUT")
+      @endif
       <div class="row">
         {{-- Profile photo --}}
         <div class="col-md-4">

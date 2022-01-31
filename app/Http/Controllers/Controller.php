@@ -10,4 +10,9 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected function getPaginate()
+    {
+        return intval(request()->cookie('laravel_paginate') ?? config('conf.paginate'));
+    }
 }

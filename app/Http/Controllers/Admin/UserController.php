@@ -3,43 +3,118 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
-use App\Repositories\ArticleRepository;
+use App\Repositories\UserRepository;
 use App\Models\User;
 
 class UserController extends Controller
 {
     private $repository;
 
-    public function __construct(ArticleRepository $repository)
+    public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
     }
 
     public function index()
     {
-        $users = User::all();
+        $users = $this->repository->getList(['paginate'=>$this->getPaginate()]);
 
-        $headers = ['id', 'name'];
+        $headers = [
+            [
+                'code' => 'id',
+                'title' => 'Id',
+            ],
+            [
+                'code' => 'fullName',
+                'title' => 'Name'
+            ]
+        ];
 
-        $headers[] = 'control';
 
         return view('admin.users.index', [
             'headers' => $headers,
-            'content' => $users->map(fn ($row) => [
-                'id' => $row->id,
-                'name' => $row->name,
-                'control' => [
-                    'action' => "/admin/users/{$row->id}",
-                    'name' => "edit",
+            'content' => $users,
+            'actions' => [
+                [
+                    'title' => 'Edit',
+                    'route' => [
+                        'name' => 'user.edit',
+                        'var' => 'user',
+                        'val' => 'id',
+                    ]
                 ]
-            ])
+            ]
         ]);
     }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // public function create()
+    // {
+    //     return view('admin.articles.create');
+    // }
 
-    public function edit(Request $request, int $id)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    // public function store(ArticleRequest $request)
+    // {
+    //     User::create($request->validated());
+    //     return redirect()->route('admin.users')
+    //         ->with('success', 'New user created!');
+    // }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    // public function show(Article $article)
+    // {
+    //     return view('admin.articles.show', compact('article'));
+    // }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(User $user)
     {
-        $user = User::findOrFail($id);
-        return view('admin.users.edit', ['user' => $user]);
+        return view('admin.users.edit', compact('user'));
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UserRequest $request, User $user)
+    {
+        $user->update($request->validated());
+        return redirect()->route('admin.user')
+            ->with('success', 'User updated!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    // public function destroy(Article $article)
+    // {
+    //     //
+    // }
 }

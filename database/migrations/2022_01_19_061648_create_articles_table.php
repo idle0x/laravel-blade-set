@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('slug', 255);
             $table->text('content');
             $table->foreignId('user_id');
-            $table->dateTime('posted_at');
+            $table->dateTime('posted_at')->nullable();
             $table->timestamps();
         });
     }

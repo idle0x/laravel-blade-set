@@ -2,7 +2,8 @@
 
 return [
     'admin.dashboard' => 'Dashboard',
-    'admin.articles' => 'Articles',
+    'admin.article' => 'Articles',
+    'admin.category' => 'Categories',
     'admin.articles_authors' => 'Authors',
-    'admin.users' => 'Users',
+    'admin.user' => 'Users',
 ];

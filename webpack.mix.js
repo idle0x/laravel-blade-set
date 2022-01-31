@@ -15,6 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
   .sass('resources/scss/app.scss', 'public/css');
 
 mix.js('resources/js/editor.js', 'public/js');
+mix.js('resources/js/ckeditor.js', 'public/js');
 
 mix.js('resources/js/datatables.js', 'public/js');
 mix.css('./node_modules/simple-datatables/src/style.css', 'public/css/datatables.css');

@@ -38,7 +38,7 @@ class AdminMenu extends Component
             return true;
         }
         $current = Route::getCurrentRoute()->getName();
-        if (strpos($item->getName(), explode('_', $current)[0])) {
+        if (strpos($item->getName(), explode('.', $current)[0])) {
             return true;
         }
     }
@@ -64,6 +64,6 @@ class AdminMenu extends Component
         $hierarchy = [];
         // dump($this->recursive($arr, count($arr) - 1, []));
         // dump($hierarchy);
-        return view('components.admin-menu', ['menu' => $this->adminMenu]);
+        return view('components.admin-menu.index', ['menu' => $this->adminMenu]);
     }
 }

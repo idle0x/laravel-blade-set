@@ -22,7 +22,7 @@ class ArticleFactory extends Factory
         return [
             "title" => $title,
             "slug" => $slug,
-            "content" => $this->faker->randomHtml(),
+            "content" => $this->faker->realText(),
             "user_id" => $users->random(1)[0]->id,
             "posted_at" => Carbon::today()->subDays(rand(0,365)),
         ];

@@ -15,7 +15,7 @@ class ArticleRepository
         $this->model = $article;
     }
 
-    public function getList(array $select = [], array $filter = []): Collection
+    public function getList(array $filter = [], array $select = [])
     {
         $query = $this->model::query();
 

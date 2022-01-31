@@ -1,10 +1,18 @@
 @extends('layouts.admin')
 
+@section('breadcrumbs')
+  {{ Breadcrumbs::render(Route::currentRouteName()) }}
+@endsection
+
+@section('page-title', 'Users')
+
 @section('content')
 
-  <x-datatable
-  :headers="$headers"
-  :content="$content"
-></x-datatable>
+    <x-table
+      :headers="$headers"
+      :items="$content"
+      :actions="$actions"
+    >
+    </x-table>
 
 @endsection

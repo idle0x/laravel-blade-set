@@ -34,13 +34,11 @@ chown-tests:
 link-storage: ## Create link for storage folder
 	${ARTISAN} storage:link
 
-##
-##Utils
-##-------------
-mchown: ## (make FOLDER=tests/ mchown) Command for change owner to 1000:1000
-	echo "folder: " $(FOLDER)
-	${PHP} chown 1000:1000 -R $(FOLDER)
+cache-clear: ## Clear cache
+	${ARTISAN} cache:clear
 
+php: ## Start application container
+	${PHP} /bin/sh
 
 tt:
 	echo $(FOO)

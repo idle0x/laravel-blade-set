@@ -1,12 +1,14 @@
 import Paragraph from "./paragraph.js";
 import Header from "./header.js";
+import Image from "./image.js";
 
 
 
 export default class Parser {
   handlers = {
     paragraph: Paragraph,
-    header: Header
+    header: Header,
+    image: Image
   }
   data = null
   output = '';

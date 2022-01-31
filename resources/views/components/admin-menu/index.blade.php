@@ -1,12 +1,12 @@
 <ul class="nav nav-pills flex-column mb-auto">
   <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
   @foreach ($menu as $link)
-  <x-admin-menu-link href="{{ route($link->getName()) }}"
+  <x-admin-menu.link href="{{ route($link->getName()) }}"
         class="{{ $link->isActive ? 'active' : '' }}"
       >
       <svg class="bi me-2" width="16" height="16" fill="#ffffff"><use xlink:href="#{{$link->getName()}}"></use></svg>
       {{ __("admin_menu.{$link->getName()}") }}
-    </x-admin-menu-link>
+    </x-admin-menu.link>
   @endforeach
   <li class="mb-1">
     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">

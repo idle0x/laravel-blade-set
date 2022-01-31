@@ -20,7 +20,7 @@ class UserControllerTest extends TestCase
     {
         User::factory(5)->create();
 
-        $response = $this->get('/admin/users');
+        $response = $this->get('/admin/user');
 
         $response->assertStatus(200);
     }
@@ -33,7 +33,7 @@ class UserControllerTest extends TestCase
     {
         User::factory(3)->create();
 
-        $response = $this->get('/admin/users/3');
+        $response = $this->get('/admin/user/3/edit');
 
         $response->assertStatus(200);
     }
@@ -46,7 +46,7 @@ class UserControllerTest extends TestCase
     {
         User::factory(2)->create();
 
-        $response = $this->get('/admin/users/3');
+        $response = $this->get('/admin/user/3/edit');
 
         $response->assertStatus(404);
     }

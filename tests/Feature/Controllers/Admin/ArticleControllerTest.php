@@ -23,7 +23,7 @@ class ArticleControllerTest extends TestCase
         User::factory(2)->create();
         Article::factory(4)->create();
 
-        $response = $this->get('/admin/articles');
+        $response = $this->get('/admin/article');
 
         $response->assertStatus(200);
     }
@@ -37,7 +37,7 @@ class ArticleControllerTest extends TestCase
         User::factory(2)->create();
         Article::factory(4)->create();
 
-        $response = $this->get('/admin/articles/3');
+        $response = $this->get('/admin/article/3/edit');
 
         $response->assertStatus(200);
     }
@@ -51,7 +51,7 @@ class ArticleControllerTest extends TestCase
         User::factory(1)->create();
         Article::factory(2)->create();
 
-        $response = $this->get('/admin/articles/3');
+        $response = $this->get('/admin/article/3/edit');
 
         $response->assertStatus(404);
     }
