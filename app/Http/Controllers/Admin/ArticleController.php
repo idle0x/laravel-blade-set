@@ -36,7 +36,7 @@ class ArticleController extends Controller
             ]
         ];
 
-        return view('admin.articles.index', [
+        return view('admin.article.index', [
             'headers' => $headers,
             'content' => $content,
             'actions' => [
@@ -59,7 +59,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('admin.articles.create');
+        return view('admin.article.create');
     }
 
     /**
@@ -71,8 +71,8 @@ class ArticleController extends Controller
     public function store(ArticleRequest $request)
     {
         Article::create($request->validated());
-        return redirect()->route('admin.articles')
-            ->with('success', 'New article created!');
+        return redirect()->route('admin.article')
+            ->with('success', "New article '{$request->validated()['title']}' created!");
     }
 
     /**
@@ -83,7 +83,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('admin.articles.show', compact('article'));
+        return view('admin.article.show', compact('article'));
     }
 
     /**
@@ -94,7 +94,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('admin.articles.edit', compact('article'));
+        return view('admin.article.edit', compact('article'));
     }
 
     /**
@@ -107,8 +107,8 @@ class ArticleController extends Controller
     public function update(ArticleRequest $request, Article $article)
     {
         $article->update($request->validated());
-        return redirect()->route('admin.articles')
-            ->with('success', 'New article updated!');
+        return redirect()->route('admin.article')
+            ->with('success', "Article '{$article->title}' updated!");
     }
 
     /**

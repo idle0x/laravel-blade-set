@@ -96,11 +96,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
  // import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
 
-_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(document.querySelector('#editor'), {}).then(function (editor) {
-  console.log("editor", editor);
-})["catch"](function (error) {
-  console.error(error);
-});
+if (!window.ClassicEditor) {
+  window.ClassicEditor = (_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default());
+}
 })();
 
 /******/ })()

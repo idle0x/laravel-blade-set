@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard', [
             'test_var' => "Test"
@@ -52,10 +52,10 @@ Route::prefix('admin')->group(function () {
         ]
     ])->only(['index', 'edit', 'update']);
 
+    Route::post('/admin/upload/file', [UploadController::class, 'uploadImage'])->name('ckeditor.upload');
+    Route::post('/admin/upload/url', [UploadController::class, 'url'])->name('upload-image-by-url');
+    // Route::get('fetch/url', EditorJsLinkController::class . '@fetch')->name('editor-js-fetch-url');
+
+    Route::redirect('/admin', '/admin/dashboard');
 });
 
-Route::post('/admin/upload/file', [UploadController::class, 'file'])->name('upload-image-by-file');
-Route::post('/admin/upload/url', [UploadController::class, 'url'])->name('upload-image-by-url');
-// Route::get('fetch/url', EditorJsLinkController::class . '@fetch')->name('editor-js-fetch-url');
-
-Route::redirect('/admin', '/admin/dashboard');

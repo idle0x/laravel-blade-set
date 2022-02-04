@@ -11,7 +11,6 @@
     </x-slot>
     Content body
   </x-modal>
-
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#testModal">
     Launch demo modal
   </button>

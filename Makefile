@@ -7,11 +7,11 @@ ARTISAN = ${PHP} ./artisan
 ##
 ##Environment
 ##-------------
-up: ## Start app environment
+start: ## Start app environment
 	$(DC) up -d --remove-orphans --no-recreate
 build: ## Build app environment and start
 	$(DC) up -d --build
-down: ## Stop app environment
+stop: ## Stop app environment
 	docker-compose down
 
 ##

@@ -13,6 +13,7 @@ services:
       - lbs
     depends_on:
       - php
+      - postgres
 
   php:
     image: idleo/lardo:latest
@@ -33,7 +34,7 @@ services:
       POSTGRES_DB: '${DB_DATABASE}'
       POSTGRES_USER: '${DB_USERNAME}'
     volumes:
-      - 'postgres_data:/var/lib/postgresql/data'
+      - 'postgres_data_lbs:/var/lib/postgresql/data'
     networks:
       - lbs
 
@@ -42,7 +43,7 @@ services:
     ports:
       - '${FORWARD_REDIS_PORT:-6379}:6379'
     volumes:
-      - 'redis_data:/data'
+      - 'redis_data_lbs:/data'
     networks:
       - lbs
 
@@ -53,7 +54,7 @@ services:
     ports:
       - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
     volumes:
-      - 'meilisearch_data:/data.ms'
+      - 'meilisearch_data_lbs:/data.ms'
     networks:
       - lbs
     healthcheck:
@@ -74,6 +75,6 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_data:
-  redis_data:
-  meilisearch_data:
+  postgres_data_lbs:
+  redis_data_lbs:
+  meilisearch_data_lbs:

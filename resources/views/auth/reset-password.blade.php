@@ -1,48 +1,53 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.simple')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+@section('content')
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="mb-4">
+          <x-alert></x-alert>
+        </div>
+        <div class="card shadow-lg rounded p-md-4">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4 text-primary">{{ __('Reset password') }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted text-center">
+                {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
+              </h6>
 
-            <!-- Password Reset Token -->
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+              <form class="needs-validation" method="post" action="{{ route('password.update') }}" novalidate>
+                @csrf
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+                <!-- Password Reset Token -->
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
-            </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <div class="mb-3">
+                  <x-form.label for="email" :value="__('Email')"></x-form.label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    <x-form.input id="email" type="email" name="email" :value="old('email')" required>
+                    </x-form.input>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <x-form.label for="password" :value="__('Password')"></x-form.label>
+                  <x-form.input id="password" type="password" name="password" required autocomplete="new-password">
+                  </x-form.input>
+                </div>
+                <div class="mb-3">
+                  <x-form.label for="password" :value="__('Confirm Password')"></x-form.label>
+                  <x-form.input id="password_confirmation" type="password" name="password_confirmation" required>
+                  </x-form.input>
+                </div>
+                <div class="mb-3 text-center">
+                  <button class="btn btn-lg btn-primary text-white" type="submit">{{ __('Reset Password') }}</button>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+@endsection

@@ -19,6 +19,11 @@ class ArticleRepository
     {
         $query = $this->model::query();
 
+        if (in_array('user', $select)) {
+            $query->with('user');
+            unset($select[array_search('user', $select)]);
+        }
+
         if (!empty($select)) {
             $query->select($select);
         }

@@ -6,7 +6,7 @@
 
 @section('content')
 
-  @include('admin.articles._form')
+  @include('admin.article._form')
 
 @endsection
 

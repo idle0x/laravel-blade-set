@@ -16,7 +16,7 @@
     <use xlink:href="#warn-fill"/>
   </svg>
   <div>
-    {{ implode('<br>', $errors->all()) }}
+    {!! implode('<br>', $errors->all()) !!}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 </div>

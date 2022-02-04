@@ -4,6 +4,7 @@ use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Article;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,6 @@ use Illuminate\Routing\Router;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/article/{slug?}', function ($slug=null) {
@@ -23,5 +23,13 @@ Route::get('/article/{slug?}', function ($slug=null) {
     return view('web.article.index', ['article' => $article]);
 
 });
+
+Route::get('/test', function () {
+    dump(request()->user());
+    return "Test";
+})->middleware(['auth']);
+
+
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
 Route::get('pagenotfound', [HomeController::class, 'pagenotfound'])->name('pagenotfound');

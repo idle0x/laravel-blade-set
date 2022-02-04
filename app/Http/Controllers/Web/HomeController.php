@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Repositories\ArticleRepository;
 
@@ -17,7 +18,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        $articles = $this->repository->getList();
+        // $articles = Article::query()-with('user')->toSql();
+        // dd($articles);
+        $articles = $this->repository->getList([], ['user']);
         return view('web.index', compact('articles'));
     }
 

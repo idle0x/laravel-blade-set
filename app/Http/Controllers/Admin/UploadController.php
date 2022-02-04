@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Validator;
 
 class UploadController extends Controller
 {
+
+    public function uploadImage(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $filename = $fileName . '_' . time() . '.' . $extension;
+
+            $request->file('upload')->storeAs('public/images', $filename);
+            $url = asset( 'storage/images/' . $filename);
+            return response()->json([
+                'fileName' => $fileName,
+                'uploaded' => 1,
+                'url' => $url
+            ]);
+        }
+    }
     /**
      * Upload file
      *
