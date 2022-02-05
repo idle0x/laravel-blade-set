@@ -17,7 +17,11 @@ class ArticleRepository
 
     public function getList(array $filter = [], array $select = [])
     {
-        $query = $this->model::query();
+        if (!empty($filter['search'])) {
+            $query = $this->model::search($filter['search']);
+        } else {
+            $query = $this->model::query();
+        }
 
         if (in_array('user', $select)) {
             $query->with('user');

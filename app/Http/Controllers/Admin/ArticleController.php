@@ -21,9 +21,14 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $content = $this->repository->getList(['paginate' => $this->getPaginate()]);
+        $filter = $request->validate([
+            'search' => 'string'
+        ]);
+
+
+        $content = $this->repository->getList(array_merge($filter, ['paginate' => $this->getPaginate()]));
 
         $headers = [
             [
