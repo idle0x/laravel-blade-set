@@ -37,8 +37,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('article', 'Admin\ArticleController', [
         'names' => [
             'index' => 'admin.article',
-        ]
-    ]);
+        ],
+        ''
+    ])->middleware('role:admin');
 
 
     Route::resource('category', 'Admin\CategoryController', [
