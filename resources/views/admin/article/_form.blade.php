@@ -1,32 +1,30 @@
-<div class="container-fluid py-5">
-  <h2 class="border-bottom">{{ $article->title ?? 'Create article' }}</h2>
-  <form action="{{ !empty($article) ? route('article.update', $article->id) : route('article.store') }}"
-      method="post" novalidate class="@if($errors->count()) was-validated @endif"
-    >
-    @csrf
-    @if(!empty($article))
-      @method('PUT')
-    @endif
-    @if (!empty($article))
-        <input type="hidden" name="id" value="{{ $article->id }}">
-    @endif
+<h2 class="border-bottom">{{ $article->title ?? 'Create article' }}</h2>
+<form action="{{ !empty($article) ? route('article.update', $article->id) : route('article.store') }}"
+    method="post" novalidate class="@if($errors->count()) was-validated @endif"
+  >
+  @csrf
+  @if(!empty($article))
+    @method('PUT')
+  @endif
+  @if (!empty($article))
+      <input type="hidden" name="id" value="{{ $article->id }}">
+  @endif
 
-    <div class="mb-3">
-      <x-form.label for="title" :value="__('Title')"></x-form.label>
-      <x-form.input id="title" type="text" name="title" value="{{ !empty($article) ? $article->title : old('title') }}" required>
-      </x-form.input>
-    </div>
+  <div class="mb-3">
+    <x-form.label for="title" :value="__('Title')"></x-form.label>
+    <x-form.input id="title" type="text" name="title" value="{{ !empty($article) ? $article->title : old('title') }}" required>
+    </x-form.input>
+  </div>
 
-    <div class="mb-3">
-      <x-form.label for="content" :value="__('Content')"></x-form.label>
-      <textarea  id="editor" name="content">
-        {{ !empty($article) ? $article->content : '' }}
-      </textarea>
-    </div>
+  <div class="mb-3">
+    <x-form.label for="content" :value="__('Content')"></x-form.label>
+    <textarea  id="editor" name="content">
+      {{ !empty($article) ? $article->content : '' }}
+    </textarea>
+  </div>
 
-    <input type="submit" id="editorjsSave" class="btn btn-primary" value="Submit">
-  </form>
-</div>
+  <input type="submit" id="editorjsSave" class="btn btn-primary" value="Submit">
+</form>
 
 @push('js')
     <script src="{{ mix('js/ckeditor.js') }}"></script>

@@ -123,6 +123,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return redirect()->route('admin.article')->with('success', 'Article has been deleted.');
     }
 }
