@@ -132,6 +132,9 @@
 
       ClassicEditor.create(document.querySelector('#editor'), {
         extraPlugins: [SimpleUploadAdapterPlugin],
+        removePlugins: ['Table', 'UploadAdapter', 'CKFinder', 'EasyImage', 'Image',
+         'ImageToolbar', 'ImageCaption', 'ImageStyle', 'ImageUpload', 'Heading', 'MediaEmbed'],
+        placeholder: 'Type content here',
       })
         .catch(error => {
           console.error(error)
