@@ -27,7 +27,6 @@ class ArticleController extends Controller
             'search' => 'string'
         ]);
 
-
         $content = $this->repository->getList(array_merge($filter, ['paginate' => $this->getPaginate()]));
 
         $headers = [

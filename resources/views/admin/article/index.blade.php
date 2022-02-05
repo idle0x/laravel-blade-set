@@ -13,7 +13,7 @@
     :actions="$actions"
     >
       <x-slot name="buttons">
-       <a href="{{ route('article.create') }}" class="btn btn-lg btn-primary">Create</a>
+       <a href="{{ route('article.create') }}" class="btn btn-success">Create</a>
       </x-slot>
 
       <x-slot name="filter">

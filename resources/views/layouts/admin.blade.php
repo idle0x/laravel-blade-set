@@ -49,6 +49,7 @@
           </div>
 
           <x-alert></x-alert>
+
           {{--! Page Heading --}}
           @yield('content')
 

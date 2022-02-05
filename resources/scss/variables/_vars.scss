@@ -36,11 +36,11 @@ $brand-google: #ea4335 !default;
 $brand-facebook: #3b5998 !default;
 
 // Overriding standart colors
-$primary:       $brand-laravel !default;
+$input-btn-focus-box-shadow: none !default;
 
 // Dropdowns color
 $dropdown-link-hover-color:         #fff;
-$dropdown-link-hover-bg:            $primary;
+$dropdown-link-hover-bg:            $brand-laravel;
 
 // Set Contrast Threshold
 $yiq-contrasted-threshold: 195 !default;
