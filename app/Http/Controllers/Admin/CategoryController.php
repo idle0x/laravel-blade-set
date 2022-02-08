@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,7 +17,53 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $content = Category::paginate(10);
+
+        $headers = [
+            [
+                'code' => 'id',
+                'title' => 'Id',
+            ],
+            [
+                'code' => 'name',
+                'title' => 'Name',
+            ],
+            [
+                'code' => 'title',
+                'title' => 'Title',
+            ],
+            [
+                'code' => 'description',
+                'title' => 'Description',
+            ],
+            [
+                'code' => '_lft',
+                'title' => '_lft',
+            ],
+            [
+                'code' => '_rgt',
+                'title' => '_rgt',
+            ],
+            [
+                'code' => 'parent_id',
+                'title' => 'parent_id',
+            ],
+        ];
+
+        return view('admin.category.index', [
+            'headers' => $headers,
+            'content' => $content,
+            'actions' => [
+                [
+                    'title' => 'Edit',
+                    'route' => [
+                        'name' => 'article.edit',
+                        'var' => 'article',
+                        'val' => 'id',
+                    ]
+                ]
+            ]
+        ]);
     }
 
     /**
@@ -25,7 +73,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -34,9 +82,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        Category::create($request->validated());
+
+        return redirect()->route('admin.category')->with('success', 'Category has been create.');
     }
 
     /**
@@ -53,12 +103,12 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Category  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit(Category $category)
     {
-        //
+        return view('category.edit', ['category' => $category]);
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Routes;
+namespace Tests\Feature\Controllers\Admin;
 
 use App\Models\Article;
 use App\Models\User;
@@ -8,6 +8,7 @@ use App\Repositories\ArticleRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Mockery;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class ArticleControllerTest extends TestCase
@@ -23,8 +24,7 @@ class ArticleControllerTest extends TestCase
         User::factory(2)->create();
         Article::factory(4)->create();
 
-        $user = User::factory()->create();
-        $this->actingAs($user);
+        $this->actingAs($this->createUser('admin'));
 
         $response = $this->get('/admin/article');
 
@@ -40,8 +40,7 @@ class ArticleControllerTest extends TestCase
         User::factory(2)->create();
         Article::factory(4)->create();
 
-        $user = User::factory()->create();
-        $this->actingAs($user);
+        $this->actingAs($this->createUser('admin'));
 
         $response = $this->get('/admin/article/3/edit');
 
@@ -57,8 +56,7 @@ class ArticleControllerTest extends TestCase
         User::factory(1)->create();
         Article::factory(2)->create();
 
-        $user = User::factory()->create();
-        $this->actingAs($user);
+        $this->actingAs($this->createUser('admin'));
 
         $response = $this->get('/admin/article/3/edit');
 

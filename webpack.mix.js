@@ -21,7 +21,6 @@ mix.js('resources/js/datatables.js', 'public/js');
 mix.css('./node_modules/simple-datatables/src/style.css', 'public/css/datatables.css');
 
 mix.js('resources/js/datepicker.js', 'public/js');
-mix.css('./node_modules/vanillajs-datepicker/dist/css/datepicker-bs5.min.css', 'public/css/datepicker.css');
 
 mix.js("resources/js/admin.js", "public/js")
   .sass("resources/scss/admin.scss", "public/css");

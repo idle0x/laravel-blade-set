@@ -7,6 +7,7 @@ window.onload = () => {
   if (st) {
     st.addEventListener('click', (e) => {
       const wrapper = document.querySelector("#wrapper");
+      const contentWrapper = document.querySelector('#content-wrapper');
       if (wrapper) {
         if (window.innerWidth <= 992) {
           wrapper.classList.toggle('sidebar-show');

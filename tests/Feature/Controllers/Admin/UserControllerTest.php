@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Routes;
+namespace Tests\Feature\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,8 +20,7 @@ class UserControllerTest extends TestCase
     {
         User::factory(5)->create();
 
-        $user = User::factory()->create();
-        $this->actingAs($user);
+        $this->actingAs($this->createUser('admin'));
 
         $response = $this->get('/admin/user');
 
@@ -36,8 +35,7 @@ class UserControllerTest extends TestCase
     {
         User::factory(3)->create();
 
-        $user = User::factory()->create();
-        $this->actingAs($user);
+        $this->actingAs($this->createUser('admin'));
 
         $response = $this->get('/admin/user/3/edit');
 
@@ -52,8 +50,7 @@ class UserControllerTest extends TestCase
     {
         User::factory(2)->create();
 
-        $user = User::factory()->create();
-        $this->actingAs($user);
+        $this->actingAs($this->createUser('admin'));
 
         $response = $this->get('/admin/user/4/edit');
 

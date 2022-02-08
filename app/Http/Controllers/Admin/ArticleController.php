@@ -24,7 +24,8 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         $filter = $request->validate([
-            'search' => 'string'
+            'search' => 'string|nullable',
+            'created_at_from' => 'date',
         ]);
 
         $content = $this->repository->getList(array_merge($filter, ['paginate' => $this->getPaginate()]));

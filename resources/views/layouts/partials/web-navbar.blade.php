@@ -39,9 +39,11 @@
       </a>
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        @auth()
         <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
+          <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
         </li>
+        @endauth
         <li class="nav-item">
           <a class="nav-link" href="#">Team</a>
         </li>
@@ -88,16 +90,20 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
           @auth()
-            
+            @if (request()->user()->hasRole('admin'))
+              <li>
+                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+              </li>
+            @endif
             <li>
               <form action="{{ route('logout') }}" method="post">
                 @csrf
-                <input class="dropdown-item"  type="submit" value="{{ __('auth.logout') }}">
+                <input class="dropdown-item"  type="submit" value="{{ __('Logout') }}">
               </form>
             </li>
           @else
-            <li><a class="dropdown-item" href="{{ route('login') }}">{{ __('auth.login') }}</a></li>
-            <li><a class="dropdown-item" href="{{ route('register') }}">{{ __('auth.register') }}</a></li>
+            <li><a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+            <li><a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a></li>
           @endauth
         </ul>
       </div>

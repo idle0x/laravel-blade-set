@@ -27,9 +27,6 @@
 
 @if (!empty($items->total()))
 
-<div class="card">
-  <div class="card-body">
-
   <table class="table table-sm table-striped table-hover">
     <thead>
       <tr>
@@ -109,9 +106,6 @@
       });
     }
   </script>
-
-  </div>
-</div>
 
 @else
   <x-nothing-show></x-nothing-show>

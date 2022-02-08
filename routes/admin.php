@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Models\User;
@@ -21,11 +24,10 @@ use Tabuna\Breadcrumbs\Trail;
 
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard', [
-            'test_var' => "Test"
-        ]);
-    })->name('admin.dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/search', [SearchController::class, 'index'])->name('admin.search');
+
+    Route::get('/settings', [SettingsController::class, 'index'])->name('admin.setting');
 
     // Route::get('/articles', [ArticleController::class, 'index'])->name('admin.articles');
     // Route::get('/articles/create', [ArticleController::class, 'create'])->name('article.create');
@@ -37,6 +39,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('article', 'Admin\ArticleController', [
         'names' => [
             'index' => 'admin.article',
+        ],
+        ''
+    ])->middleware('role:admin');
+
+    Route::resource('category', 'Admin\CategoryController', [
+        'names' => [
+            'index' => 'admin.category',
         ],
         ''
     ])->middleware('role:admin');

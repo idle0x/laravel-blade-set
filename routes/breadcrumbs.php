@@ -40,6 +40,30 @@ Breadcrumbs::for('user.edit', function (BreadcrumbTrail $trail, $id) {
     $trail->push('Edit', route('user.edit', $id));
 });
 
+// Settings
+Breadcrumbs::for('admin.setting', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Settings', route('admin.setting'));
+});
+// Search
+Breadcrumbs::for('admin.search', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Search', route('admin.search'));
+});
+// Category
+Breadcrumbs::for('admin.category', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('category', route('admin.category'));
+});
+Breadcrumbs::for('category.edit', function (BreadcrumbTrail $trail, $id) {
+    $trail->parent('admin.category');
+    $trail->push('Edit', route('category.edit', $id));
+});
+Breadcrumbs::for('category.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.category');
+    $trail->push('Create', route('category.create'));
+});
+
 // Home > Blog > [Category]
 // Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
 //     $trail->parent('blog');

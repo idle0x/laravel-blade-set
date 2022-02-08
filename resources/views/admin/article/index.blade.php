@@ -19,12 +19,25 @@
       <x-slot name="filter">
 
           <div class="col-md-4 mb-3">
-            <label for="validationCustom01" class="form-label">Search</label>
-            <input type="text" class="form-control" name="search" id="validationCustom01" value="{{ request()->get('search') }}">
-            <div class="valid-feedback">
-              Looks good!
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="search" name="search" value="{{ request()->get('search') }}" placeholder="name@example.com">
+              <label for="floatingInput">Search</label>
             </div>
           </div>
+          <div class="col-md-4 mb-3">
+            <div class="form-floating mb-3">
+              <input type="date" class="form-control" id="created_at_from" name="created_at_from" value="{{ request()->get('created_at_from') }}" placeholder="name@example.com">
+              <label for="floatingInput">Created at from</label>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="form-floating mb-3">
+              <input type="date" class="form-control" id="created_at_to" name="created_at_to" placeholder="name@example.com">
+              <label for="floatingInput">Created at to</label>
+            </div>
+          </div>
+
+
 
       </x-slot>
 

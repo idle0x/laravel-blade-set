@@ -13,9 +13,21 @@
   }
 }
 
-#wrapper.sidebar-show #sidebar {
-  left: 0;
+#wrapper.sidebar-show
+{
+  #sidebar {
+    left: 0;
+  }
+
+  #content-wrapper {
+    transition: all .3s ease;
+    padding-left: 280px;
+    #content {
+      min-width: 350px;
+    }
+  }
 }
+
 #wrapper.sidebar-hide #sidebar {
   @include media-breakpoint-up(lg) {
     left: -280px;

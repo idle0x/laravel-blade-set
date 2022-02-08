@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-
 use App\Models\Article;
 use Illuminate\Support\Collection;
 
@@ -21,6 +20,10 @@ class ArticleRepository
             $query = $this->model::search($filter['search']);
         } else {
             $query = $this->model::query();
+        }
+
+        if (!empty($filter['created_at_from'])) {
+            $query->where('created_at', '>=', $filter['created_at_from']);
         }
 
         if (in_array('user', $select)) {

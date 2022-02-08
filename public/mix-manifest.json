@@ -1,12 +1,11 @@
 {
-    "/js/app.js": "/js/app.js?id=13a64a4b26c64e008740",
+    "/js/app.js": "/js/app.js?id=a4f5d1dfd571eaba4dde",
     "/js/editor.js": "/js/editor.js?id=484e33c0e1bcce4041f4",
     "/js/ckeditor.js": "/js/ckeditor.js?id=b5f6141fe8e675588c74",
     "/js/datatables.js": "/js/datatables.js?id=8e150cdbf2300fac27cf",
-    "/js/datepicker.js": "/js/datepicker.js?id=2f1978b3d99c4c9a2ebd",
-    "/js/admin.js": "/js/admin.js?id=16d2ec6aa5ec009b38b9",
-    "/css/datepicker.css": "/css/datepicker.css?id=9fce3c96ceb30813130f",
+    "/js/datepicker.js": "/js/datepicker.js?id=b4a391fc1a0ff259a8d0",
+    "/js/admin.js": "/js/admin.js?id=634b3417e01bc841d6f5",
     "/css/datatables.css": "/css/datatables.css?id=d51c139b41e312c912de",
-    "/css/admin.css": "/css/admin.css?id=b669405656803eb251ce",
-    "/css/app.css": "/css/app.css?id=ac54cc7ec7ddea8ff699"
+    "/css/app.css": "/css/app.css?id=05d991744c254b9536ec",
+    "/css/admin.css": "/css/admin.css?id=241983ef408e46ce386f"
 }

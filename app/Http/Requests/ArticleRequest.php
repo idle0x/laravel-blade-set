@@ -36,7 +36,7 @@ class ArticleRequest extends FormRequest
             'title' => 'string|required|max:255|min:3',
             'content' => 'required',
         ];
-        if($this->requestUri == '/admin/articles/update') {
+        if ($this->requestUri == '/admin/articles/update') {
             $rules['id'] = 'integer|required';
         } else {
             $rules['user_id'] = 'integer|required';

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -49,9 +50,13 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
+    use HasRoles;
+    use Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -89,7 +94,8 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
 
-    public function getFullNameAttribute() {
+    public function getFullNameAttribute()
+    {
         return $this->first_name . ' ' . $this->last_name;
     }
 }

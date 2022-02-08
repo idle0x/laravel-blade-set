@@ -30,8 +30,12 @@ class ArticlePolicy
      */
     public function view(User $user, Article $article)
     {
-        return $article->user_id == $user->id;
+        if ($user->hasRole('admin')) {
+            return true;
+        }
 
+        // User can view their own articles
+        return $article->user_id == $user->id;
     }
 
     /**

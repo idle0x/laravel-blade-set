@@ -11,7 +11,6 @@ use Illuminate\View\Component;
 
 class AdminMenu extends Component
 {
-
     private $adminMenu;
     /**
      * Create a new component instance.
@@ -25,7 +24,7 @@ class AdminMenu extends Component
 
     private function adminRouteFilter($routes)
     {
-        $filtered = $routes->filter(function($value, $key) {
+        $filtered = $routes->filter(function ($value, $key) {
             return strpos($value->getName(), 'admin.') !== false;
         });
         $filtered->map(fn ($item) => $item->isActive = $this->isActive($item));
@@ -50,14 +49,14 @@ class AdminMenu extends Component
      */
     public function render()
     {
-    //     dump(User::all());
-    //     dump(request());
-    //     Cache::add('test', "test value");
-    //     Log::channel('daily')->info('Test chanel');
-    //     $redis = Redis::connection();
+        //     dump(User::all());
+        //     dump(request());
+        //     Cache::add('test', "test value");
+        //     Log::channel('daily')->info('Test chanel');
+        //     $redis = Redis::connection();
 
-    //     $redis->set("name", "value");
-    //     Log::debug("Test debug message");
+        //     $redis->set("name", "value");
+        //     Log::debug("Test debug message");
         $name = "article_test";
 
         $arr = explode('_', $name);

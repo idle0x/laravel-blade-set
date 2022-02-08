@@ -7,15 +7,17 @@
 
     <div class="row my-4">
       <div class="col-md-4 mb-4">
-        <x-admin.card-link
-          :title="'Users'"
-          :value="$usersTotal ?? 'count'"
-          :href="route('admin.user')"
+        @if ($users)
+          <x-admin.card-link
+            :title="$users->name"
+            :value="$users->count"
+            :href="route('admin.user')"
           >
-          <x-slot name="icon">
-            <i class="bi bi-people-fill display-2 text-muted"></i>
-          </x-slot>
-        </x-admin.card-link>
+            <x-slot name="icon">
+              <i class="bi bi-people-fill display-2 text-muted"></i>
+            </x-slot>
+          </x-admin.card-link>
+        @endif
       </div>
       <div class="col-md-4 mb-4">
         <x-admin.card-link

@@ -8240,6 +8240,7 @@ window.onload = function () {
   if (st) {
     st.addEventListener('click', function (e) {
       var wrapper = document.querySelector("#wrapper");
+      var contentWrapper = document.querySelector('#content-wrapper');
 
       if (wrapper) {
         if (window.innerWidth <= 992) {

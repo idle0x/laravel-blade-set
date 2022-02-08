@@ -26,8 +26,7 @@
         "postcss": "^8.1.14",
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.48.0",
-        "sass-loader": "^12.4.0",
-        "vanillajs-datepicker": "^1.2.0"
+        "sass-loader": "^12.4.0"
     },
     "dependencies": {
         "@ckeditor/ckeditor5-build-balloon-block": "^31.1.0",
@@ -35,6 +34,7 @@
         "@ckeditor/ckeditor5-upload": "^31.1.0",
         "bootstrap-icons": "^1.7.2",
         "ckeditor5": "^31.1.0",
+        "litepicker": "^2.0.12",
         "simple-datatables": "^3.2.0"
     }
 }

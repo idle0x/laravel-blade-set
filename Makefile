@@ -28,6 +28,15 @@ coverage-html: ## Tests coverage (xdebug need in coverage mode)
 
 chown-tests:
 	${PHP} chown 1000:1000 -R tests/
+
+
+##
+##Helpers
+##-------------
+pcf: ## php-cs-fixer fix the app folder
+	php-cs-fixer fix ./app
+
+
 ##
 ##Helpers
 ##-------------
